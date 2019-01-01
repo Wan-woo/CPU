@@ -49,6 +49,13 @@ module pcpu(
 	reg [31:0] gr[7:0];
 	reg [31:0] MEM[1023:0];
 	wire branch_flag;
+	wire [31:0] ins;
+	reg [31:0] ir[11:0];
+	
+	//********读入****************************//
+	//initial $readmemb("data_in.txt",ir);
+	
+	instruction iri(clock,reset,pc,ins);
 	
 	//************* CPU Control *************//
 	always @(posedge clock)
@@ -84,6 +91,7 @@ module pcpu(
 	assign i_addr = pc;
 	always @(posedge clock or negedge reset)
 		begin
+			
 			if (!reset)
 				begin
 					id_ir <= {`NOP, 26'b00_0000_0000_0000_0000_0000_0000};
@@ -92,8 +100,8 @@ module pcpu(
 				
 			else if (state ==`exec)
 				begin
-				    id_ir <= i_datain;
-				    
+				    //id_ir <= ir[pc];        //以txt方式读入
+				   id_ir <= ins;
 					//一开始即检测load冲突
 					//新的指令要使用到了load写入的寄存器
 					if((id_ir[31:26] == `LOAD)
@@ -112,7 +120,7 @@ module pcpu(
 						id_ir <= {`NOP, 26'b00_0000_0000_0000_0000_0000_0000};
 					end
 					else
-						pc <= pc + 4;
+						pc <= pc + 1;
 				end
 		end
 		
