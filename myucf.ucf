@@ -1,0 +1,25 @@
+NET "clock" LOC = "G12";
+NET "enable" LOC = "C11";
+NET "reset" LOC = "M4";
+NET "start" LOC = "A7";
+
+NET "select<0>" LOC = "P11";
+NET "select<1>" LOC = "L3";
+NET "select<2>" LOC = "K3";
+NET "select<3>" LOC = "B4";
+
+NET "select_bit<0>" LOC = "K14";
+NET "select_bit<1>" LOC = "M13";
+NET "select_bit<2>" LOC = "J12";
+NET "select_bit<3>" LOC = "F12";
+
+NET "segment<0>" LOC = "N13";
+NET "segment<1>" LOC = "M12";
+NET "segment<2>" LOC = "L13";
+NET "segment<3>" LOC = "P12";
+NET "segment<4>" LOC = "N11";
+NET "segment<5>" LOC = "N14";
+NET "segment<6>" LOC = "H12";
+NET "segment<7>" LOC = "L14";
+
+NET "clk" LOC = "B8";
